@@ -1,4 +1,4 @@
-const API_URL = "http://127.0.0.1:8000";
+const API_URL = "http://127.0.0.1:8080";
 
 // Matches the order and names your model was trained on
 const CLASSES = [
