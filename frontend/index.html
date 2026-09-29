@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YOLO Image Classifier</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <main class="container">
+    <header>
+      <h1>Image Classifier</h1>
+      <p class="subtitle">A YOLO26n image classification model, served through a FastAPI backend.</p>
+    </header>
+
+    <section class="about-card">
+      <h2>About this model</h2>
+      <p>
+        This model is <strong>YOLO26n-cls</strong>, the smallest classification variant of
+        Ultralytics' YOLO26 family (about 1.5 million parameters). It was fine-tuned on
+        <strong>Imagenette</strong>, a 10-class subset of the well-known ImageNet dataset,
+        starting from weights already pretrained on ImageNet's full 1,000 categories.
+      </p>
+      <div class="stats-row">
+        <div class="stat">
+          <span class="stat-value">10</span>
+          <span class="stat-label">classes</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value">~95.9%</span>
+          <span class="stat-label">validation accuracy</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value">~9ms</span>
+          <span class="stat-label">per image (CPU)</span>
+        </div>
+      </div>
+      <p class="note">
+        It can only recognize the 10 classes below. Any other object will still be
+        forced into one of these categories, usually with lower confidence.
+      </p>
+    </section>
+
+    <section class="gallery-section">
+      <h2>The 10 classes it knows</h2>
+      <div id="gallery" class="gallery"></div>
+    </section>
+
+    <section class="try-section">
+      <h2>Try it</h2>
+      <p class="hint">Select one image for a detailed result, or multiple for a batch.</p>
+      <div id="drop-zone" class="drop-zone">
+        <p>Click to choose image(s), or drag them here</p>
+        <input type="file" id="file-input" accept="image/*" multiple hidden>
+      </div>
+
+      <img id="preview" class="preview" hidden>
+
+      <p id="status" class="status"></p>
+
+      <section id="result" class="result" hidden>
+        <h3 id="main-label"></h3>
+        <div id="bars"></div>
+      </section>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
